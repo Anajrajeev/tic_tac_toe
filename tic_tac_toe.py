@@ -4,7 +4,7 @@ box=[['_','_','_'],
 n=0
 toolno=0
 while True:
-    if n>=9 and tool>=9:
+    if n>=9 and toolno>=9:
         break
     row=int(input("enter the row: "))
     column=int(input("enter the column: "))
@@ -25,6 +25,8 @@ while True:
     n=n+1
 
 def win_logic():
-    for i in box:
-        for j in box:
-            
+    for index in range(3):
+        if box[index] == tool:
+            print("winner")
+        else:
+            print("not yet")
