@@ -3,21 +3,43 @@ box=[['_','_','_'],
      ['_','_','_']]
 def win_logic():
     for row in box:
-        if all(cell==tool for cell in row):
-            print("winner")
+        all_cells_match = True
+        for cell in row:
+            if cell != tool:
+                all_cells_match = False
+                break
+        if all_cells_match:
             return True
-    for col in range(3):
-        if all(box[row][col] == tool for row in range(3)):
-            print(f"Player {tool} wins on a column!")
+
+    for j in range(3):
+        all_cells_match = True
+        for i in range(3):
+            if box[i][j] != tool:
+                all_cells_match = False
+                break
+        if all_cells_match:
             return True
-    if all(box[i][i] == tool for i in range(3)):
-        print(f"Player {tool} wins on the main diagonal!")
+
+    for i in range(3):
+        if box[i][2 - i] != tool:
+            break
+    else:
         return True
-    if all(box[i][2 - i] == tool for i in range(3)):
-        print(f"Player {tool} wins on the anti-diagonal!")
+
+    for i in range(3):
+        if box[i][i] != tool:
+            break
+    else:
         return True
 
     return False
+
+    #DIAGONAL WIN LOGIC FROM TOP LEFT
+    for i in range(3):
+        if box[i][i] != tool:
+            print('')
+        else:
+            print('winner')
 n=0
 toolno=0
 while True:
@@ -37,7 +59,8 @@ while True:
             print('Already played')
     else:
         print('enter numbers below 3')
-    if win_logic(tool):
+    if win_logic():
+        print(f"Player {tool} wins!")
         break   
     toolno=toolno+1
     n=n+1
