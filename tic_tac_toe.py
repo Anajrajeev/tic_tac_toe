@@ -33,13 +33,6 @@ def win_logic():
         return True
 
     return False
-
-    #DIAGONAL WIN LOGIC FROM TOP LEFT
-    for i in range(3):
-        if box[i][i] != tool:
-            print('')
-        else:
-            print('winner')
 n=0
 toolno=0
 while True:
